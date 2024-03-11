@@ -3,8 +3,8 @@ package com.example.Coffee.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "mainDish")
-public class MainDish {
+@Table(name = "sideDish")
+public class SideDish {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,11 +13,7 @@ public class MainDish {
     @Column(name = "Description")
     private String description;
 
-    @ManyToOne(targetEntity = SideDish.class)
-    @JoinColumn(name = "menu_SideDish")
-    private SideDish sideDish;
-
-    public MainDish(String description) {
+    public SideDish(String description) {
         this.description = description;
     }
 
@@ -39,7 +35,7 @@ public class MainDish {
 
     @Override
     public String toString() {
-        return "MainDish{" +
+        return "SideDish{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 '}';
