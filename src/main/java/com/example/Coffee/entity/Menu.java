@@ -13,19 +13,16 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "Day of Week")
+    private String dayOfWeek;
+
+    @OneToMany(mappedBy = "menu")
+    private Set<MainDish> mainDishes;
+    @OneToMany(mappedBy = "menu")
+    private Set<Poke> pokes;
     @Column(name = "Price")
     private double price;
     @Column(name = "Drink")
     private String drink;
-    @ManyToMany(targetEntity = MainDish.class)
-    @JoinTable(name="menu_mainDish")
-    private Set<MainDish> mainDishes;
-    @ManyToMany(targetEntity = SideDish.class)
-    @JoinTable(name="menu_sideDish")
-    private Set<SideDish> sideDishes;
-    @Column(name = "Day of Week")
-    private String dayOfWeek;
-
-
 
 }
