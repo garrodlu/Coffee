@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MenuServiceImpl implements GenericService<Menu> {
+public class MenuServiceImpl implements MenuService<Menu> {
 
     @Autowired
     private MenuRepository repository;

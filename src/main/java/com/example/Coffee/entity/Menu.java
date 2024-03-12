@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 import jakarta.persistence.*;
 import org.hibernate.metamodel.mapping.ForeignKeyDescriptor;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -14,28 +15,23 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_menu")
     private Long idMenu;
-    @Column(name = "Day of Week")
-    private String dayOfWeek;
+    @Column(name = "Day")
+    private LocalDate day;
 
-    @OneToMany(mappedBy = "menu")
-    private Set<MainDish> mainDishes;
-    @OneToMany(mappedBy = "menu")
-    private Set<Poke> pokes;
+    @Column(name="dish1")
+    private String dish1;
+    @Column(name="dish2")
+    private String dish2;
+    @Column(name="dish3")
+    private String dish3;
+    @Column(name="dish4")
+    private String dish4;
+
     @Column(name = "Price")
     private double price;
-    @Column(name = "Drink")
-    private String drink;
+
 
     public Menu() {
-    }
-
-    public Menu(Long idMenu, String dayOfWeek, Set<MainDish> mainDishes, Set<Poke> pokes, double price, String drink) {
-        this.idMenu = idMenu;
-        this.dayOfWeek = dayOfWeek;
-        this.mainDishes = mainDishes;
-        this.pokes = pokes;
-        this.price = price;
-        this.drink = drink;
     }
 
     public Long getIdMenu() {
@@ -46,28 +42,44 @@ public class Menu {
         this.idMenu = idMenu;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public LocalDate getDay() {
+        return day;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public void setDay(LocalDate day) {
+        this.day = day;
     }
 
-    public Set<MainDish> getMainDishes() {
-        return mainDishes;
+    public String getDish1() {
+        return dish1;
     }
 
-    public void setMainDishes(Set<MainDish> mainDishes) {
-        this.mainDishes = mainDishes;
+    public void setDish1(String dish1) {
+        this.dish1 = dish1;
     }
 
-    public Set<Poke> getPokes() {
-        return pokes;
+    public String getDish2() {
+        return dish2;
     }
 
-    public void setPokes(Set<Poke> pokes) {
-        this.pokes = pokes;
+    public void setDish2(String dish2) {
+        this.dish2 = dish2;
+    }
+
+    public String getDish3() {
+        return dish3;
+    }
+
+    public void setDish3(String dish3) {
+        this.dish3 = dish3;
+    }
+
+    public String getDish4() {
+        return dish4;
+    }
+
+    public void setDish4(String dish4) {
+        this.dish4 = dish4;
     }
 
     public double getPrice() {
@@ -78,23 +90,16 @@ public class Menu {
         this.price = price;
     }
 
-    public String getDrink() {
-        return drink;
-    }
-
-    public void setDrink(String drink) {
-        this.drink = drink;
-    }
-
     @Override
     public String toString() {
         return "Menu{" +
                 "idMenu=" + idMenu +
-                ", dayOfWeek='" + dayOfWeek + '\'' +
-                ", mainDishes=" + mainDishes +
-                ", pokes=" + pokes +
+                ", day=" + day +
+                ", dish1='" + dish1 + '\'' +
+                ", dish2='" + dish2 + '\'' +
+                ", dish3='" + dish3 + '\'' +
+                ", dish4='" + dish4 + '\'' +
                 ", price=" + price +
-                ", drink='" + drink + '\'' +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package com.example.Coffee.service;
 
 import java.util.List;
 
-public interface GenericService<T> {
+public interface MenuService<T> {
 
     List<T> findAll();
     T findById(Long id);
