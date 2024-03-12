@@ -31,12 +31,20 @@ public class MenuServiceImpl implements GenericService<Menu> {
     }
 
     @Override
-    public void save(Menu item) {
-        repository.save(item);
+    public Menu save(Menu item) {
+        return repository.save(item);
     }
 
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+    @Override
+    public boolean exist(Long id) {
+        return repository.existsById(id);
+    }
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

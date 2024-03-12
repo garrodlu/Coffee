@@ -29,12 +29,20 @@ public class PokeServiceImpl implements GenericService<Poke> {
     }
 
     @Override
-    public void save(Poke item) {
-        repository.save(item);
+    public Poke save(Poke item) {
+        return repository.save(item);
     }
 
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+    @Override
+    public boolean exist(Long id) {
+        return repository.existsById(id);
+    }
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

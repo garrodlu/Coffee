@@ -28,12 +28,22 @@ public class IngredientServiceImpl implements GenericService<Ingredient> {
     }
 
     @Override
-    public void save(Ingredient item) {
-        repository.save(item);
+    public Ingredient save(Ingredient item) {
+       return repository.save(item);
     }
 
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public boolean exist(Long id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

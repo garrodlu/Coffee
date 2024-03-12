@@ -30,12 +30,20 @@ public class MainDishServiceImpl implements GenericService<MainDish> {
     }
 
     @Override
-    public void save(MainDish item) {
-        repository.save(item);
+    public MainDish save(MainDish item) {
+        return repository.save(item);
     }
 
     @Override
     public void delete(Long id) {
             repository.deleteById(id);
+    }
+    @Override
+    public boolean exist(Long id) {
+        return repository.existsById(id);
+    }
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

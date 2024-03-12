@@ -12,7 +12,8 @@ public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_menu")
+    private Long idMenu;
     @Column(name = "Day of Week")
     private String dayOfWeek;
 
@@ -24,5 +25,7 @@ public class Menu {
     private double price;
     @Column(name = "Drink")
     private String drink;
+
+
 
 }

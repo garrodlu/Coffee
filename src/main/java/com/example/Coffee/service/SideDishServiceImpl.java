@@ -29,12 +29,20 @@ public class SideDishServiceImpl implements GenericService<SideDish> {
     }
 
     @Override
-    public void save(SideDish item) {
-        repository.save(item);
+    public SideDish save(SideDish item) {
+       return repository.save(item);
     }
 
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+    @Override
+    public boolean exist(Long id) {
+        return repository.existsById(id);
+    }
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

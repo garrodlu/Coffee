@@ -6,7 +6,11 @@ public interface GenericService<T> {
 
     List<T> findAll();
     T findById(Long id);
-    void save(T item);
+    T save(T item);
     void delete(Long id);
+
+    boolean exist(Long id);
+
+    void deleteAll();
 
 }
