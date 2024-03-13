@@ -18,14 +18,8 @@ public class Menu {
     @Column(name = "Day")
     private LocalDate day;
 
-    @Column(name="dish1")
-    private String dish1;
-    @Column(name="dish2")
-    private String dish2;
-    @Column(name="dish3")
-    private String dish3;
-    @Column(name="dish4")
-    private String dish4;
+    @Column(name="Dishes")
+    private Set<String> dishes;
 
     @Column(name = "Price")
     private double price;
@@ -50,36 +44,12 @@ public class Menu {
         this.day = day;
     }
 
-    public String getDish1() {
-        return dish1;
+    public Set<String> getDishes() {
+        return dishes;
     }
 
-    public void setDish1(String dish1) {
-        this.dish1 = dish1;
-    }
-
-    public String getDish2() {
-        return dish2;
-    }
-
-    public void setDish2(String dish2) {
-        this.dish2 = dish2;
-    }
-
-    public String getDish3() {
-        return dish3;
-    }
-
-    public void setDish3(String dish3) {
-        this.dish3 = dish3;
-    }
-
-    public String getDish4() {
-        return dish4;
-    }
-
-    public void setDish4(String dish4) {
-        this.dish4 = dish4;
+    public void setDishes(Set<String> dishes) {
+        this.dishes = dishes;
     }
 
     public double getPrice() {
@@ -95,10 +65,7 @@ public class Menu {
         return "Menu{" +
                 "idMenu=" + idMenu +
                 ", day=" + day +
-                ", dish1='" + dish1 + '\'' +
-                ", dish2='" + dish2 + '\'' +
-                ", dish3='" + dish3 + '\'' +
-                ", dish4='" + dish4 + '\'' +
+                ", dishes=" + dishes +
                 ", price=" + price +
                 '}';
     }

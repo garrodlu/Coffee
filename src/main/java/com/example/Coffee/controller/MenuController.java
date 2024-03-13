@@ -3,6 +3,7 @@ package com.example.Coffee.controller;
 import com.example.Coffee.entity.Menu;
 import com.example.Coffee.service.MenuService;
 import com.sun.tools.javac.Main;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,10 +20,12 @@ public class MenuController {
     private final Logger log = LoggerFactory.getLogger(MenuController.class);
 
     @GetMapping("/api/menus")
+    @Operation(summary = "Find all menus", description = "Return a list of all menus")
     public List<Menu> findAll() {
         return service.findAll();
     }
 
+    @Hidden
     @GetMapping("/api/menus/{id}")
     @Operation(summary = "Find menu", description = "Find a menu (PK)")
     public ResponseEntity<Menu> findOneById(@PathVariable Long id) {
@@ -34,7 +37,9 @@ public class MenuController {
         }
     }
 
+    @Hidden
     @PostMapping("/api/menus")
+    @Operation(summary = "Create menu", description = "Create menu")
     public ResponseEntity<Menu> create(@RequestBody Menu menu) {
         if (menu.getIdMenu() != null) {
             log.warn("Trying to create a Menu with ID");
@@ -44,7 +49,9 @@ public class MenuController {
         return ResponseEntity.ok(result);
     }
 
+    @Hidden
     @PutMapping("/api/menus")
+    @Operation(summary = "Update menu", description = "Update menu")
     public ResponseEntity<Menu> update(@RequestBody Menu menu) {
         if (menu.getIdMenu() == null) {
             log.warn("Trying to update a non existent menu");
@@ -58,8 +65,9 @@ public class MenuController {
         Menu result = service.save(menu);
         return ResponseEntity.ok(result);
     }
-
+    @Hidden
     @DeleteMapping("/api/menus/{id}")
+    @Operation(summary = "Delete menu", description = "Delete menu (PK)")
     public ResponseEntity<Menu> delete(@PathVariable Long id) {
         if (!service.exist(id)) {
             log.warn("Trying to delete a non existent menu");
@@ -68,8 +76,9 @@ public class MenuController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
+    @Hidden
     @DeleteMapping("/api/menus")
+    @Operation(summary = "Delete all menus", description = "Delete al menus")
     public ResponseEntity<Menu> deleteAll() {
         log.info("REST Request for deleting all menus ");
         service.deleteAll();
