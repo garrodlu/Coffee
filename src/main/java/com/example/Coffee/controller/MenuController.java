@@ -25,7 +25,7 @@ public class MenuController {
         return service.findAll();
     }
 
-    @Hidden
+
     @GetMapping("/api/menus/{id}")
     @Operation(summary = "Find menu", description = "Find a menu (PK)")
     public ResponseEntity<Menu> findOneById(@PathVariable Long id) {
@@ -37,51 +37,4 @@ public class MenuController {
         }
     }
 
-    @Hidden
-    @PostMapping("/api/menus")
-    @Operation(summary = "Create menu", description = "Create menu")
-    public ResponseEntity<Menu> create(@RequestBody Menu menu) {
-        if (menu.getIdMenu() != null) {
-            log.warn("Trying to create a Menu with ID");
-            return ResponseEntity.badRequest().build();
-        }
-        Menu result = service.save(menu);
-        return ResponseEntity.ok(result);
-    }
-
-    @Hidden
-    @PutMapping("/api/menus")
-    @Operation(summary = "Update menu", description = "Update menu")
-    public ResponseEntity<Menu> update(@RequestBody Menu menu) {
-        if (menu.getIdMenu() == null) {
-            log.warn("Trying to update a non existent menu");
-            return ResponseEntity.badRequest().build();
-        }
-        if (!service.exist(menu.getIdMenu())) {
-            log.warn("Trying to update a non existent menu");
-            return ResponseEntity.notFound().build();
-        }
-
-        Menu result = service.save(menu);
-        return ResponseEntity.ok(result);
-    }
-    @Hidden
-    @DeleteMapping("/api/menus/{id}")
-    @Operation(summary = "Delete menu", description = "Delete menu (PK)")
-    public ResponseEntity<Menu> delete(@PathVariable Long id) {
-        if (!service.exist(id)) {
-            log.warn("Trying to delete a non existent menu");
-            return ResponseEntity.notFound().build();
-        }
-        service.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-    @Hidden
-    @DeleteMapping("/api/menus")
-    @Operation(summary = "Delete all menus", description = "Delete al menus")
-    public ResponseEntity<Menu> deleteAll() {
-        log.info("REST Request for deleting all menus ");
-        service.deleteAll();
-        return ResponseEntity.noContent().build();
-    }
 }
