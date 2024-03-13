@@ -36,5 +36,15 @@ public class MenuController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/api/menus")
+    @Operation(summary = "Create menu", description = "Create menu")
+    public ResponseEntity<Menu> create(@RequestBody Menu menu) {
+        if (menu.getIdMenu() != null) {
+            log.warn("Trying to create a Menu with ID");
+            return ResponseEntity.badRequest().build();
+        }
+        Menu result = service.save(menu);
+        return ResponseEntity.ok(result);
+    }
 
 }
